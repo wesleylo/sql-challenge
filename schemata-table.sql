@@ -1,15 +1,15 @@
-DROP TABLE IF EXISTS Titles CASCADE;
-DROP TABLE IF EXISTS Salaries CASCADE;
-DROP TABLE IF EXISTS Dept_Manager CASCADE;
+DROP TABLE IF EXISTS Dept_Manager CASCADE; -- Drop and import/create in reverse orders to satisfy constraints
 DROP TABLE IF EXISTS Dept_Emp CASCADE;
-DROP TABLE IF EXISTS Employees CASCADE;
 DROP TABLE IF EXISTS Departments CASCADE;
+DROP TABLE IF EXISTS Salaries CASCADE;
+DROP TABLE IF EXISTS Employees CASCADE;
+DROP TABLE IF EXISTS Titles CASCADE;
 
 
-CREATE TABLE Departments (
-  dept_no varchar NOT NULL,
-  dept_name varchar NOT NULL,
-  PRIMARY KEY (dept_no)
+CREATE TABLE Titles (
+  title_id varchar NOT NULL,
+  title varchar NOT NULL,
+  PRIMARY KEY (title_id)
 );
 
 CREATE TABLE Employees (
@@ -24,6 +24,18 @@ CREATE TABLE Employees (
   FOREIGN KEY (emp_title_id) REFERENCES Titles(title_id)
 );
 
+CREATE TABLE Salaries (
+  emp_no varchar NOT NULL,
+  salary int NOT NULL,
+  FOREIGN KEY (emp_no) REFERENCES Employees(emp_no)
+);
+
+CREATE TABLE Departments (
+  dept_no varchar NOT NULL,
+  dept_name varchar NOT NULL,
+  PRIMARY KEY (dept_no)
+);
+
 CREATE TABLE Dept_Emp (
   dept_no varchar NOT NULL,
   emp_no varchar NOT NULL,
@@ -36,16 +48,4 @@ CREATE TABLE Dept_Manager (
   emp_no varchar NOT NULL,
   FOREIGN KEY (dept_no) REFERENCES Departments(dept_no),
   FOREIGN KEY (emp_no) REFERENCES Employees(emp_no)
-);
-
-CREATE TABLE Salaries (
-  emp_no varchar NOT NULL,
-  salary int NOT NULL,
-  FOREIGN KEY (emp_no) REFERENCES Employees(emp_no)
-);
-
-CREATE TABLE Titles (
-  title_id varchar NOT NULL,
-  title varchar NOT NULL,
-  PRIMARY KEY (title_id)
 );
