@@ -1,3 +1,4 @@
+![ERD Image](https://github.com/wesleylo/sql-challenge/blob/master/QuickDBD-ERD.png?raw=true)
 Import CSV data into relational DB, create table schema, and answer the following data analysis questions:
 <ol>
 <li>List the following details of each employee: employee number, last name, first name, sex, and salary.</li>
