@@ -37,15 +37,15 @@ CREATE TABLE Departments (
 );
 
 CREATE TABLE Dept_Emp (
+  emp_no varchar NOT NULL, -- Make sure data column order matches for importing
   dept_no varchar NOT NULL,
-  emp_no varchar NOT NULL,
-  FOREIGN KEY (dept_no) REFERENCES Departments(dept_no),
-  FOREIGN KEY (emp_no) REFERENCES Employees(emp_no)
+  FOREIGN KEY (emp_no) REFERENCES Employees(emp_no),
+  FOREIGN KEY (dept_no) REFERENCES Departments(dept_no)
 );
 
 CREATE TABLE Dept_Manager (
-  dept_no varchar NOT NULL,
+  dept_no varchar NOT NULL, -- Make sure data column order matches for importing
   emp_no varchar NOT NULL,
-  FOREIGN KEY (dept_no) REFERENCES Departments(dept_no),
-  FOREIGN KEY (emp_no) REFERENCES Employees(emp_no)
+  FOREIGN KEY (emp_no) REFERENCES Employees(emp_no),
+  FOREIGN KEY (dept_no) REFERENCES Departments(dept_no)
 );
