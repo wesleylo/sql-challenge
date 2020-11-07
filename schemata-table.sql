@@ -47,6 +47,5 @@ CREATE TABLE Salaries (
 CREATE TABLE Titles (
   title_id varchar NOT NULL,
   title varchar NOT NULL,
-  PRIMARY KEY (title_id),
-  FOREIGN KEY (title_id) REFERENCES Employees(emp_title_id)
+  PRIMARY KEY (title_id)
 );
